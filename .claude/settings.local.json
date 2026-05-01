@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:apexlegends.fandom.com)",
+      "WebFetch(domain:liquipedia.net)",
+      "WebFetch(domain:pley.gg)",
+      "WebFetch(domain:apexlegends.wiki.gg)",
+      "WebFetch(domain:www.thespike.gg)",
+      "WebFetch(domain:www.ea.com)",
+      "Bash(npx --yes create-next-app@latest . --typescript --tailwind --app --eslint --no-src-dir --import-alias \"@/*\" --turbopack --use-npm --yes)"
+    ]
+  }
+}
