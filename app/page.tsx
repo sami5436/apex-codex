@@ -1,65 +1,69 @@
-import Image from "next/image";
+import Hero from "./components/Hero";
+import LegendsBrowser from "./components/LegendsBrowser";
+import Heirlooms from "./components/Heirlooms";
+import Movement from "./components/Movement";
+import Classes from "./components/Classes";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
+    <main className="relative">
+      <TopNav />
+      <Hero />
+      <LegendsBrowser />
+      <Classes />
+      <Heirlooms />
+      <Movement />
+      <Footer />
+    </main>
+  );
+}
+
+function TopNav() {
+  const links = [
+    { href: "#legends", label: "Roster" },
+    { href: "#classes", label: "Classes" },
+    { href: "#heirlooms", label: "Heirlooms" },
+    { href: "#movement", label: "Movement" },
+  ];
+  return (
+    <nav className="sticky top-0 z-30 backdrop-blur-md bg-apex-bg/70 border-b border-apex-line">
+      <div className="px-6 sm:px-10 md:px-14 lg:px-20 h-14 flex items-center gap-3">
+        <a href="#" className="flex items-center gap-2 font-display cursor-pointer">
+          <span className="size-3 bg-apex-orange clip-tag" />
+          <span className="text-sm tracking-[0.4em] uppercase font-semibold">
+            Apex / Codex
+          </span>
+        </a>
+        <div className="ml-auto flex items-center gap-1 sm:gap-3 overflow-x-auto no-scrollbar">
+          {links.map((l) => (
             <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              key={l.href}
+              href={l.href}
+              className="px-3 py-2 text-xs sm:text-sm tracking-[0.25em] uppercase text-apex-mute hover:text-apex-fg transition-colors cursor-pointer"
+              style={{ minHeight: 44, display: "inline-flex", alignItems: "center" }}
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+              {l.label}
+            </a>
+          ))}
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </div>
+    </nav>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="border-t border-apex-line px-6 sm:px-10 md:px-14 lg:px-20 py-10 text-xs text-apex-mute">
+      <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+        <div className="font-display tracking-[0.35em] uppercase">
+          Apex / Codex
         </div>
-      </main>
-    </div>
+        <div className="sm:ml-auto">
+          A fan-made field manual. Apex Legends, Legend names and likenesses are
+          property of Respawn Entertainment and Electronic Arts. Imagery sourced
+          from official EA channels.
+        </div>
+      </div>
+    </footer>
   );
 }
